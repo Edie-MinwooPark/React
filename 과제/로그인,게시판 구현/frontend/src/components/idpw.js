@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
 import { useState } from 'react';
 import { login, signUp } from "../middleware"
@@ -11,9 +11,10 @@ const IdPw = ({formBtn, moveBtn}) => {
   const [id,setId] = useState("");
   const [pw,setPw] = useState("");
 
+
   const nav = useNavigate();
   function submitHandler(event){
-    formBtn === "로그인" ? dispatch(login(id,pw)) : dispatch(signUp(id,pw))
+    formBtn === "로그인" ? dispatch(login(id,pw)) : dispatch(signUp(id,pw,nav))
   }
 
   function loginMoveHandler(){

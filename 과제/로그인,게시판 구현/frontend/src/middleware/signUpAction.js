@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-function signUp (id,pw){
+function signUp (id,pw,nav){
 
 
     try {
@@ -14,7 +14,8 @@ function signUp (id,pw){
             
             console.log(response.data);
 
-            window.location.href ="/"
+            // window.location.href ="/"
+            nav('/')
 
         }
     } catch (error) {
