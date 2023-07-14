@@ -10,11 +10,12 @@ const IdPw = ({formBtn, moveBtn}) => {
   const dispatch = useDispatch();
   const [id,setId] = useState("");
   const [pw,setPw] = useState("");
-
+  const [idErr, setIdErr] = useState(false);
+  const [pwErr, setPwErr] = useState(false);
 
   const nav = useNavigate();
   function submitHandler(event){
-    formBtn === "로그인" ? dispatch(login(id,pw)) : dispatch(signUp(id,pw,nav))
+    formBtn === "로그인" ? dispatch(login(id,pw,nav,setIdErr,setPwErr)) : dispatch(signUp(id,pw,nav))
   }
 
   function loginMoveHandler(){
@@ -31,6 +32,8 @@ const IdPw = ({formBtn, moveBtn}) => {
           <button onClick = {submitHandler}>{formBtn}</button>
       </>
       <button onClick={loginMoveHandler}>{moveBtn}</button>
+      {idErr ? <p>ID를 다시 확인하세요</p> : <></>}
+      {pwErr ? <p>PW를 다시 확인하세요</p> : <></>}
     </>
   )
 }

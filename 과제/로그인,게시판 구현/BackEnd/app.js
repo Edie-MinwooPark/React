@@ -6,13 +6,18 @@ const dot = require('dotenv').config();
 const cors = require('cors');
 const { sequelize } = require("./models")
 const signUpRouter = require('./routers/signUp');
+const loginRouter = require('./routers/login');
+const cookieParser = require('cookie-parser');
 
 app.use(cors({
     origin : [
+        "http://127.0.0.1:3000",
         "http://localhost:3000"
     ],
     credentials : true,
 }))
+
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(session({
@@ -22,6 +27,7 @@ app.use(session({
 }))
 
 app.use('/signup',signUpRouter);
+app.use('/', loginRouter)
 
 
 sequelize
