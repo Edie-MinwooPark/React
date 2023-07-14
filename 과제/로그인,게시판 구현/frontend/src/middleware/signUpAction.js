@@ -2,6 +2,8 @@ import axios from "axios"
 
 
 function signUp (id,pw){
+
+
     try {
         return async (dispatch)=>{
             console.log(id,pw)
@@ -11,6 +13,9 @@ function signUp (id,pw){
             })
             
             console.log(response.data);
+
+            window.location.href ="/"
+
         }
     } catch (error) {
         console.log(error);
